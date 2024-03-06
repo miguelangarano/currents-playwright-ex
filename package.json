@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "commit": "commit-wizard"
   },
   "keywords": [],
   "author": "",
@@ -14,10 +15,23 @@
     "typescript": "^5.0.2"
   },
   "devDependencies": {
-    "@currents/playwright": "^0.11.1",
+    "@currents/playwright": "^0.12.1",
     "@playwright/test": "^1.38.1",
     "@types/node": "^20.8.2",
     "playwright": "^1.38.1",
     "ts-node": "^10.9.2"
+  },
+  "release": {
+    "generateNotes": "github-post-release"
+  },
+  "config": {
+    "pre-git": {
+      "commit-msg": "simple",
+      "pre-commit": [],
+      "pre-push": [],
+      "post-commit": [],
+      "post-checkout": [],
+      "post-merge": []
+    }
   }
 }
