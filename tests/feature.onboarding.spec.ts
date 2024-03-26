@@ -11,7 +11,7 @@ test.describe(() => {
       contentType: "image/png",
     });
     const screenshot1 = await page.screenshot();
-    await testInfo.attach("screenshot12", {
+    await testInfo.attach("screenshot13", {
       body: screenshot,
       contentType: "image/png",
     });
