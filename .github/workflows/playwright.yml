@@ -20,7 +20,15 @@ jobs:
       with:
         node-version: 18
 
-    - env:
+    - name: Install Playwright browsers
+      run: npx playwright install --with-deps
+
+    - name: Install dependencies
+      run: npm install
+    
+
+    - name: Run Playwright tests
+      env:
         DATABASE_URL: postgres://postgres:postgres@localhost:5432/postgres
         SHARD_COUNT: 5
         CURRENTS_PROJECT_ID: ${{ secrets.CURRENTS_PROJECT_ID }}
@@ -32,15 +40,6 @@ jobs:
         COMMIT_INFO_SHA: ${{ github.event.pull_request.head.sha }}
         COMMIT_INFO_TIMESTAMP: ${{ github.event.pull_request.head.repo.updated_at }}
         COMMIT_INFO_REMOTE: ${{ github.event.repository.html_url }}
-
-    - name: Install Playwright browsers
-      run: npx playwright install --with-deps
-
-    - name: Install dependencies
-      run: npm install
-    
-
-    - name: Run Playwright tests
       run: npx pwc --pwc-debug --key OGzz4AX4DzjE2DSA --project-id UA7nI9 --ci-build-id ${{ github.repository }}-${{ github.run_id }}-${{ github.run_attempt}} --shard ${{ matrix.shard }}
 
     # - name: Run commit info
