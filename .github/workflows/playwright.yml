@@ -31,8 +31,6 @@ jobs:
       env:
         DATABASE_URL: postgres://postgres:postgres@localhost:5432/postgres
         SHARD_COUNT: 5
-        CURRENTS_PROJECT_ID: ${{ secrets.CURRENTS_PROJECT_ID }}
-        CURRENTS_RECORD_KEY: ${{ secrets.CURRENTS_RECORD_KEY }}
         COMMIT_INFO_BRANCH: ${{ github.event.pull_request.head.ref }}
         COMMIT_INFO_MESSAGE: ${{ github.event.pull_request.title }}
         COMMIT_INFO_EMAIL: ${{ github.event.pull_request.email }}
