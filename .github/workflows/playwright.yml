@@ -20,18 +20,18 @@ jobs:
       with:
         node-version: 18
 
-    env:
-      DATABASE_URL: postgres://postgres:postgres@localhost:5432/postgres
-      SHARD_COUNT: 5
-      CURRENTS_PROJECT_ID: ${{ secrets.CURRENTS_PROJECT_ID }}
-      CURRENTS_RECORD_KEY: ${{ secrets.CURRENTS_RECORD_KEY }}
-      COMMIT_INFO_BRANCH: ${{ github.event.pull_request.head.ref }}
-      COMMIT_INFO_MESSAGE: ${{ github.event.pull_request.title }}
-      COMMIT_INFO_EMAIL: ${{ github.event.pull_request.email }}
-      COMMIT_INFO_AUTHOR: ${{ github.event.pull_request.user.login }}
-      COMMIT_INFO_SHA: ${{ github.event.pull_request.head.sha }}
-      COMMIT_INFO_TIMESTAMP: ${{ github.event.pull_request.head.repo.updated_at }}
-      COMMIT_INFO_REMOTE: ${{ github.event.repository.html_url }}
+    - env:
+        DATABASE_URL: postgres://postgres:postgres@localhost:5432/postgres
+        SHARD_COUNT: 5
+        CURRENTS_PROJECT_ID: ${{ secrets.CURRENTS_PROJECT_ID }}
+        CURRENTS_RECORD_KEY: ${{ secrets.CURRENTS_RECORD_KEY }}
+        COMMIT_INFO_BRANCH: ${{ github.event.pull_request.head.ref }}
+        COMMIT_INFO_MESSAGE: ${{ github.event.pull_request.title }}
+        COMMIT_INFO_EMAIL: ${{ github.event.pull_request.email }}
+        COMMIT_INFO_AUTHOR: ${{ github.event.pull_request.user.login }}
+        COMMIT_INFO_SHA: ${{ github.event.pull_request.head.sha }}
+        COMMIT_INFO_TIMESTAMP: ${{ github.event.pull_request.head.repo.updated_at }}
+        COMMIT_INFO_REMOTE: ${{ github.event.repository.html_url }}
 
     - name: Install Playwright browsers
       run: npx playwright install --with-deps
